@@ -45,7 +45,7 @@ public class ParticleManagerMixin {
         }
 
         if (OptiVisConfig.INSTANCE.disablePotionParticles) {
-            if (type == ParticleTypes.EFFECT || type == ParticleTypes.INSTANT_EFFECT || type == ParticleTypes.ENTITY_EFFECT || type == ParticleTypes.AMBIENT_ENTITY_EFFECT || type == ParticleTypes.WITCH) {
+            if (type == ParticleTypes.EFFECT || type == ParticleTypes.INSTANT_EFFECT || type == ParticleTypes.ENTITY_EFFECT || type == ParticleTypes.WITCH) {
                 cir.setReturnValue(null);
                 return;
             }
