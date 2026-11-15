@@ -1,5 +1,6 @@
 package ru.optivis.mixin;
 
+import net.minecraft.client.render.Frustum;
 import net.minecraft.client.render.entity.EntityRenderManager;
 import net.minecraft.entity.Entity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -12,9 +13,14 @@ import ru.optivis.config.OptiVisConfig;
 public class EntityRenderDispatcherMixin {
 
     @Inject(method = "shouldRender", at = @At("HEAD"), cancellable = true)
-    private void optivis$entityDistance(Entity entity, net.minecraft.client.render.Frustum frustum, double x, double y, double z, CallbackInfoReturnable<Boolean> cir) {
+    private void optivis$entityDistance(Entity entity, Frustum frustum, double x, double y, double z, CallbackInfoReturnable<Boolean> cir) {
         double maxDist = OptiVisConfig.INSTANCE.entityRenderDistance;
-        if (maxDist  maxDistSq) {
+        if (maxDist <= 0.0) {
+            cir.setReturnValue(false);
+            return;
+        }
+
+        if (maxDist * maxDist < entity.squaredDistanceTo(x, y, z)) {
             cir.setReturnValue(false);
         }
     }
