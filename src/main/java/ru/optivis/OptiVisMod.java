@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
+import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
 import ru.optivis.config.OptiVisConfig;
 import ru.optivis.gui.OptiVisScreen;
@@ -12,6 +13,7 @@ import ru.optivis.gui.OptiVisScreen;
 public class OptiVisMod implements ClientModInitializer {
 
     public static final String MOD_ID = "optivis";
+    public static final KeyBinding.Category OPTIVIS_CATEGORY = KeyBinding.Category.create(Identifier.of(MOD_ID, "main"));
     public static KeyBinding openGuiKey;
 
     @Override
@@ -22,7 +24,7 @@ public class OptiVisMod implements ClientModInitializer {
                 "key.optivis.open_gui",
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_RIGHT_SHIFT,
-                "category.optivis"
+                OPTIVIS_CATEGORY
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
