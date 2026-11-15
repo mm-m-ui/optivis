@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "optivis",
+  "version": "${version}",
+  "name": "OptiVis",
+  "description": "Client-side render optimization and visual customization for 1.21.11",
+  "authors": ["OptiVis"],
+  "contact": {},
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "ru.optivis.OptiVisMod"
+    ]
+  },
+  "mixins": [
+    "optivis.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.4",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
