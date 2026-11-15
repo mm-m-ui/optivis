@@ -4,10 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FlowerBlock;
-import net.minecraft.block.FernBlock;
-import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.VineBlock;
-import net.minecraft.block.PlantBlock;
 import net.minecraft.client.render.block.BlockRenderManager;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.util.math.MatrixStack;
@@ -55,7 +52,7 @@ public class BlockRenderManagerMixin {
         }
 
         if (OptiVisConfig.INSTANCE.disableFerns) {
-            if (block instanceof FernBlock || block == Blocks.FERN || block == Blocks.LARGE_FERN) {
+            if (block == Blocks.FERN || block == Blocks.LARGE_FERN) {
                 cir.setReturnValue(false);
                 return;
             }
